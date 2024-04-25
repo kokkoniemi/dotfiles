@@ -1,0 +1,66 @@
+xterm.termName: xterm-16color
+
+! Color:
+!xterm*vt100.background:  #080807
+!xterm*vt100.foreground:  #ffb000
+!xterm*vt100.cursorColor: #ffb000
+!xterm*vt100.color0: #493200
+!xterm*vt100.color1: #5c3514
+!xterm*vt100.color2: #624d20
+!xterm*vt100.color3: #875d10
+!xterm*vt100.color4: #664600
+!xterm*vt100.color5: #855820
+!xterm*vt100.color6: #997423
+!xterm*vt100.color7: #bc8100
+!xterm*vt100.color8: #5e4100
+!xterm*vt100.color9: #6e3f17
+!xterm*vt100.color10: #896c2d
+!xterm*vt100.color11: #e59e00
+!xterm*vt100.color12: #a37012
+!xterm*vt100.color13: #956121
+!xterm*vt100.color14: #b3841b
+!xterm*vt100.color15: #ffb000
+
+xterm*vt100.reverseVideo: off 
+xterm.vt100.locale: true
+xterm.vt100.locate: false
+xterm.vt100.utf8: true
+xterm.vt100.geometry: 110x32
+xterm*vt100.initialFont: 6
+xterm*vt100.renderFont: false
+xterm*vt100.faceName: More Perfect DOS VGA
+xterm*vt100.faceSize: 12
+
+xterm*vt100.ScrollBar: true
+xterm*vt100.rightScrollBar: true 
+xterm*vt100.leftScrollBar: false 
+xterm.vt100.scrollbar.width: 15
+
+xterm*vt100.savelines: 16384
+
+xterm*vt100.selectToClipboard: true
+
+xterm*vt100.charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+xterm*vt100.translations: #override \n\
+	~Ctrl ~Meta <Btn3Down>: ignore() \n\
+	Meta <Btn3Down>: clear-saved-lines() \n\
+	~Ctrl ~Meta <Btn3Up>: insert-selection(SELECT, CUT_BUFFER0) \n\
+	~Ctrl ~Meta <Btn2Down>: start-extend() \n\
+	Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+	Ctrl <Key>M: maximize() \n\
+	Ctrl <Key>R: restore() \n\
+
+xterm*vt100.metaSendsEscape: true
+
+xterm*vt100.eightBitInput:   false
+xterm*vt100.eightBitOutput:  true
+
+xterm.vt100.backarrowKey: false
+xterm.ttyModes: erase ^?
+
+xterm*vt100.loginshell: true
+
+xterm*vt100.internalBorder: 2
+
