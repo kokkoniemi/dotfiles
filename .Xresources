@@ -35,6 +35,13 @@ xterm*vt100.ScrollBar: true
 xterm*vt100.rightScrollBar: true 
 xterm*vt100.leftScrollBar: false 
 xterm.vt100.scrollbar.width: 15
+xterm.vt100.scrollbar.foreground: gray50 
+xterm.vt100.scrollbar.background: black 
+xterm.vt100.scrollbar.borderWidth: 0
+xterm.vt100.scrollbar.displayList: 0
+xterm.vt100.scrollbar.thumb: true
+
+
 
 xterm*vt100.savelines: 16384
 
