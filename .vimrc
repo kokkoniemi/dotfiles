@@ -17,11 +17,11 @@ else
 endif
 
 " Change current directory silently to opened file
-":autocmd BufEnter * silent! lcd %:p:h
-"set nocompatible
-"filetype on
-"filetype plugin on
-"filetype indent on
+:autocmd BufEnter * silent! lcd %:p:h
+set nocompatible
+filetype on
+filetype plugin on
+filetype indent on
 
 " VISUALS
 if &t_Co > 2 || has("gui_running")
@@ -59,8 +59,8 @@ augroup vimrcEx
 augroup END
 
 " Open file browser with CTRL + B
-inoremap <c-b> <ESC>:30 Lex %:h<cr>
-nnoremap <c-b> <ESC>:30 Lex %:h<cr>
+inoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
+nnoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
 " Disable filebrowser banner
 let g:netrw_banner=0
 let g:netrw_liststyle=3
