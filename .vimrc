@@ -34,12 +34,16 @@ if &t_Co > 2 || has("gui_running")
   set showcmd
   set showmode
   set showmatch
+  set scrolloff=10
+  set mouse=a
+  set fillchars+=vert:\ 
   set wildmenu
   set wildmode=list:longest
   "set colorcolumn=81
   " set lsp column color same as background
   set background=dark
   hi! link SignColumn Normal
+  hi Visual cterm=none ctermbg=Blue ctermfg=NONE
   
   syntax on
   "set number
@@ -61,6 +65,7 @@ augroup vimrcEx
 
   " For all text files set 'textwidth' to 80 characters.
   autocmd FileType text setlocal textwidth=80
+  autocmd BufReadPost *.svelte set syntax=html
 augroup END
 
 " Open file browser with CTRL + B
@@ -110,3 +115,4 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
