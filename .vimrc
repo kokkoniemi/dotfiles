@@ -44,7 +44,8 @@ if &t_Co > 2 || has("gui_running")
   set background=dark
   hi! link SignColumn Normal
   hi Visual cterm=none ctermbg=Blue ctermfg=NONE
-  
+  hi VertSplit ctermfg=black ctermbg=white
+
   syntax on
   "set number
   "set cursorline
