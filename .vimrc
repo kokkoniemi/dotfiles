@@ -36,6 +36,7 @@ if &t_Co > 2 || has("gui_running")
   set showmode
   set showmatch
   set scrolloff=10
+  set ttymouse=xterm2
   set mouse=a
   set fillchars+=vert:│
   set wildmenu

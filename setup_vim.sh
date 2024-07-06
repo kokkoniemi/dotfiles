@@ -8,7 +8,7 @@ echo -n "Checking if git is installed... "
 if which git >/dev/null 2>&1; then
 	echo "OK"
 else
-	echo "git is not installed. Exiting... "
+	echo "not installed. Exiting... "
 	exit 1
 fi
 
@@ -66,6 +66,7 @@ done
 
 echo "Setting up fzf..."
 $PLUGIN_DIR/fzf/install
+echo -e "\r\n"
 
 echo "Setting up .vimrc..."
 user_vimrc=$HOME"/.vimrc"
