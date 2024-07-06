@@ -19,7 +19,8 @@ else
 endif
 
 " Change current directory silently to opened file
-:autocmd BufEnter * silent! lcd %:p:h
+" :autocmd BufEnter * silent! lcd %:p:h
+
 set nocompatible
 filetype on
 filetype plugin on
@@ -36,7 +37,7 @@ if &t_Co > 2 || has("gui_running")
   set showmatch
   set scrolloff=10
   set mouse=a
-  set fillchars+=vert:\ 
+  set fillchars+=vert:│
   set wildmenu
   set wildmode=list:longest
   "set colorcolumn=81
@@ -70,11 +71,14 @@ augroup vimrcEx
 augroup END
 
 " Open file browser with CTRL + B
-inoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
-nnoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
+" inoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
+" nnoremap <c-b> <ESC>:Lex<cr>:vertical resize 30<cr>
 " Disable filebrowser banner
 let g:netrw_banner=0
 let g:netrw_liststyle=3
+
+" Open fzf with CTRL + B
+nnoremap <c-b> <ESC>:Files<cr>
 
 " Load VIM 8 packages
 packloadall
