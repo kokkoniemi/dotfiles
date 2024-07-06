@@ -69,7 +69,7 @@ xterm.vt100.faceName: More Perfect DOS VGA
 xterm.vt100.faceSize: 12
 
 ! Enable Right-side scrollbar:
-xterm.vt100.scrollBar: true
+xterm.vt100.scrollBar: false
 xterm.vt100.rightScrollBar: true 
 xterm.vt100.leftScrollBar: false 
 xterm.vt100.scrollbar.width: 15
