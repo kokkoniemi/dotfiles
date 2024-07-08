@@ -18,6 +18,8 @@ else
   endif
 endif
 
+set directory=$HOME/.vim/swp " set directory for swap files
+
 " Change current directory silently to opened file
 " :autocmd BufEnter * silent! lcd %:p:h
 

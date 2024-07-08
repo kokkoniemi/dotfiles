@@ -2,6 +2,7 @@
 
 BACKUP_DIR=$HOME"/.vim/backup"
 UNDO_DIR=$HOME"/.vim/undo"
+SWP_DIR=$HOME"/.vim/swp"
 PLUGIN_DIR=$HOME"/.vim/pack/plugins/start"
 
 echo -n "Checking if git is installed... "
@@ -18,6 +19,14 @@ if [ ! -d "$BACKUP_DIR" ]; then
 	echo "created $BACKUP_DIR"
 else
 	echo "$BACKUP_DIR already exists"
+fi
+
+echo -n "Checking if swap file directory exists... "
+if [ ! -d "$SWP_DIR" ]; then
+	mkdir -p "$SWP_DIR"
+	echo "created $SWP_DIR"
+else
+	echo "$SWP_DIR already exists"
 fi
 
 echo -n "Checking if undo directory exists... "
