@@ -118,8 +118,8 @@ if [[ "$add_path" =~ ^[Yy]$ ]]; then
 
 	if ! grep -q "export PATH=.*$go_bin" "$shell_config"; then
 		echo -e "\n# Add Go binary to path" >> "$shell_config"
-		echo "export PATH=\"\$PATH:$go_bin\"" >> "$shell_config"
-		export PATH="$PATH:$go_bin"
+		echo "export PATH=\"$go_bin:\$PATH\"" >> "$shell_config"
+		export PATH="$go_bin:$PATH"
 		echo "added $go_bin to PATH in $shell_config"
 
 		echo "Please restart your terminal or run 'source $shell_config' \
@@ -152,8 +152,8 @@ if [[ "$add_env_vars" =~ ^[Yy]$ ]]; then
 
 
 	if ! grep -q "export PATH=.*\$GOBIN" "$shell_config"; then
-		echo "export PATH=\"\$PATH:\$GOBIN\"" >> "$shell_config"
-		export PATH="$PATH:$GOBIN"
+		echo "export PATH=\"\$GOBIN:\$PATH\"" >> "$shell_config"
+		export PATH="$GOBIN:$PATH"
 		echo "Added \$GOBIN to \$PATH"
 	fi
 fi

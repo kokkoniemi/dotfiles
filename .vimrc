@@ -49,7 +49,7 @@ if &t_Co > 2 || has("gui_running")
   set wildmode=list:longest
   "set colorcolumn=81
   " set lsp column color same as background
-  set background=dark
+  set bg=dark
   hi! link SignColumn Normal
   hi Visual cterm=none ctermbg=Blue ctermfg=NONE
   hi VertSplit ctermfg=black ctermbg=white
