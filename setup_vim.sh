@@ -52,9 +52,18 @@ plugin_repos=(
 	"https://github.com/prabirshrestha/asyncomplete-lsp.vim.git"
 	"https://github.com/prabirshrestha/asyncomplete.vim.git"
 	"https://github.com/mattn/vim-lsp-settings.git"
-	"https://github.com/junegunn/fzf.git"
-	"https://github.com/junegunn/fzf.vim.git"
 )
+
+read -p "Do you want to setup fzf for vim? (y/n) " setup_fzf
+case "$setup_fzf" in
+	y|Y )
+		plugin_repos+=("https://github.com/junegunn/fzf.git")
+		plugin_repos+=("https://github.com/junegunn/fzf.vim.git")
+		;;
+	* )
+		echo "fzf will not be configured for vim"
+esac
+
 
 current_dir=$(pwd)
 
@@ -73,9 +82,13 @@ for repo in "${plugin_repos[@]}"; do
 	fi
 done
 
-echo "Setting up fzf..."
-$PLUGIN_DIR/fzf/install
-echo -e "\r\n"
+case "$setup_fzf" in
+    y|Y )
+	    echo "Setting up fzf..."
+	    $PLUGIN_DIR/fzf/install
+	    echo -e "\r\n"
+	    ;;
+esac
 
 echo "Setting up .vimrc..."
 user_vimrc=$HOME"/.vimrc"
