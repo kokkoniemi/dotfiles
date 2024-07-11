@@ -4,6 +4,7 @@ BACKUP_DIR=$HOME"/.vim/backup"
 UNDO_DIR=$HOME"/.vim/undo"
 SWP_DIR=$HOME"/.vim/swp"
 PLUGIN_DIR=$HOME"/.vim/pack/plugins/start"
+COLORS_DIR=$HOME"/.vim/colors"
 
 echo -n "Checking if git is installed... "
 if which git >/dev/null 2>&1; then
@@ -104,10 +105,37 @@ if [ -e "$user_vimrc" ]; then
 			;;
 		* )
 			echo "Keeping existing .vimrc"
+			;;
 	esac
 else
 	echo "Creating symlink for .vimrc..."
 	ln -s "$current_dir/.vimrc" "$user_vimrc"
- 	echo "Symlink created from $current_dir/.vimrc to $user_vimrc"
+ 	echo "Symlink created to $current_dir/.vimrc from $user_vimrc"
+fi
+
+setup_acme="n"
+read -p "Do you want to install Plan-9 inspired Acme colorscheme? (y/n) " setup_acme
+
+if [[ "$setup_acme" =~ ^[Yy]$ ]]; then
+	mkdir -p "$COLORS_DIR"
+	user_acme="$COLORS_DIR/acme.vim"
+
+	if [ -e "$user_acme" ]; then
+		echo "A colorscheme called 'acme.vim' already exists in '$user_acme'."
+		read -p "Do you want to replace it? (y/n) " choice
+		case "$choice" in
+			y|Y )
+				echo "Replacing existing acme.vim"
+				rm -f "$user_acme"
+				ln -s "$current_dir/.vim/colors/acme.vim" "$user_acme"
+				;;
+			* )
+				echo "Keeping existing 'acme.vim'"
+				;;
+		esac
+	else
+		ln -s "$current_dir/.vim/colors/acme.vim" "$user_acme"
+		echo "Symlink created to $current_dir/.vim/colors/acme.vim from $user_acme"
+	fi
 fi
 
