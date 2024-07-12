@@ -139,3 +139,12 @@ if [[ "$setup_acme" =~ ^[Yy]$ ]]; then
 	fi
 fi
 
+if vim --version | grep -q '+clipboard'; then
+	echo "Vim has clipboard support. All good!"
+else
+	echo "╔═════════════ IMPORTANT ══════════════╗"
+	echo "║ Vim does not have clipboard support. ║"
+	echo "║  'gvim' or 'vim-gtk3' enables that.  ║"
+	echo "╚══════════════════════════════════════╝"
+fi
+

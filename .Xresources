@@ -65,7 +65,7 @@ xterm.vt100.initialFont: 6
 xterm.vt100.renderFont: false
 
 ! Default font and size:
-xterm.vt100.faceName: Monaspace Neon Var Regular
+xterm.vt100.faceName: Monaspace Neon Var Medium
 xterm.vt100.faceSize: 12
 
 ! Enable Right-side scrollbar:
