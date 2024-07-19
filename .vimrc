@@ -53,8 +53,8 @@ if &t_Co > 2 || has("gui_running")
   " set lsp column color same as background
   set bg=dark
   hi! link SignColumn Normal
-  hi Visual cterm=none ctermbg=white ctermfg=black
-  hi VertSplit ctermfg=white ctermbg=black cterm=NONE 
+  hi Visual cterm=none ctermbg=blue ctermfg=black
+  hi VertSplit ctermfg=white ctermbg=NONE cterm=NONE 
   hi StatusLine ctermfg=black ctermbg=white cterm=NONE
   hi StatusLineNC ctermfg=darkgray ctermbg=white cterm=NONE
 
@@ -101,6 +101,10 @@ let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
 
+hi FernRootSymbol ctermfg=gray
+hi FernLeafSymbol ctermfg=gray
+hi FernBranchSymbol ctermfg=gray
+hi FernLeaderSymbol ctermfg=gray
 
 augroup FernGroup
 	autocmd!
