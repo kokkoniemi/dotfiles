@@ -63,8 +63,18 @@ case "$setup_fzf" in
 		;;
 	* )
 		echo "fzf will not be configured for vim"
+		;;
 esac
 
+read -p "Do you want to setup vim-fern? (y/n) " setup_fern
+case "$setup_fern" in
+	y|Y )
+		plugin_repos+=(https://github.com/lambdalisue/vim-fern.git)
+		;;
+	* )
+		echo "fern will not be configured for vim"
+		;;
+esac
 
 current_dir=$(pwd)
 

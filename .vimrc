@@ -4,6 +4,8 @@ if v:progname =~? "evim"
   finish
 endif
 
+let mapleader = " "
+
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
@@ -54,7 +56,7 @@ if &t_Co > 2 || has("gui_running")
   hi Visual cterm=none ctermbg=white ctermfg=black
   hi VertSplit ctermfg=white ctermbg=black cterm=NONE 
   hi StatusLine ctermfg=black ctermbg=white cterm=NONE
-  hi StatusLineNC ctermfg=darkgray ctermbg=white
+  hi StatusLineNC ctermfg=darkgray ctermbg=white cterm=NONE
 
   syntax on
   "set number
@@ -86,8 +88,18 @@ augroup END
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 
-" Open fzf with CTRL + B
-nnoremap <c-b> <ESC>:Files<cr>
+" Open fzf with LEADER + B
+nnoremap <Leader>b <ESC>:Files<cr>
+
+" Open fern with LEADER + J
+nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
+let g:fern#hide_cursorline=1
+let g:fern#default_hidden=1
+
+augroup FernGroup
+	autocmd!
+	autocmd FileType fern setlocal fillchars=eob:\ 
+augroup END
 
 " Load VIM 8 packages
 packloadall
