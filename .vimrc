@@ -52,7 +52,7 @@ if &t_Co > 2 || has("gui_running")
   set bg=dark
   hi! link SignColumn Normal
   hi Visual cterm=none ctermbg=white ctermfg=black
-  hi VertSplit ctermfg=white ctermbg=black
+  hi VertSplit ctermfg=white ctermbg=black cterm=NONE 
   hi StatusLine ctermfg=black ctermbg=white cterm=NONE
   hi StatusLineNC ctermfg=darkgray ctermbg=white
 
