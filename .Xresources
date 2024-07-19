@@ -45,8 +45,8 @@ xterm.vt100.color13: fuchsia
 xterm.vt100.color14: aqua
 xterm.vt100.color15: white
 
-! Reverse colors > on: white on black, off: black on white956121
-xterm.vt100.reverseVideo: off 
+! Reverse colors > on: white on black, off: black on white
+xterm.vt100.reverseVideo: off
 
 ! Ensure using UTF-8
 xterm.vt100.locale: true
@@ -98,6 +98,8 @@ xterm.vt100.translations: #override \n\
 	Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
 	Ctrl <Key>M: maximize() \n\
 	Ctrl <Key>R: restore() \n\
+	Ctrl <Btn2Down>: ignore() \n\
+	Ctrl Shift <Btn3Down>: popup-menu(vtMenu)
 
 ! Enable <Alt> key combination:
 xterm.vt100.metaSendsEscape: true
