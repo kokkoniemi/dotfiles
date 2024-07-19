@@ -95,6 +95,12 @@ nnoremap <Leader>b <ESC>:Files<cr>
 nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
 let g:fern#hide_cursorline=1
 let g:fern#default_hidden=1
+let g:fern#renderer#default#leading = "│"
+let g:fern#renderer#default#root_symbol = "┬─ "
+let g:fern#renderer#default#leaf_symbol = "├─ "
+let g:fern#renderer#default#collapsed_symbol = "├─ "
+let g:fern#renderer#default#expanded_symbol = "├┬ "
+
 
 augroup FernGroup
 	autocmd!
