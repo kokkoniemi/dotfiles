@@ -1,6 +1,7 @@
 ! Set the default text foreground and background colors.
 xterm.vt100.foreground: #C4C5B5
 xterm.vt100.background: #1A1A1A
+xterm.vt100.cursorColor: #F6F7EC
 
 ! These are the 8 ANSI colors and their bright equivalents.  Depending on
 ! other resource settings, xterm may use the bright colors when displaying

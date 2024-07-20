@@ -31,8 +31,12 @@ compile_file() {
 }
 
 available_profiles=(
+	"borland"
 	"default"
+	"dracula"
 	"monokai"
+	"night_owl"
+	"solarized_light"
 )
 
 current_profile="<not detected>"
