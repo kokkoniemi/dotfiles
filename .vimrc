@@ -4,7 +4,10 @@ if v:progname =~? "evim"
   finish
 endif
 
+" Set leader key to space
 let mapleader = " "
+" Use 16-color palette
+set t_Co=16
 
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim

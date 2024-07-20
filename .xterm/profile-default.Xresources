@@ -1,0 +1,26 @@
+! Set the default text foreground and background colors.
+xterm.vt100.foreground: gray90
+xterm.vt100.background: black
+
+! These are the 8 ANSI colors and their bright equivalents.  Depending on
+! other resource settings, xterm may use the bright colors when displaying
+! bold text (see the boldColors resource).
+xterm.vt100.color0: black
+xterm.vt100.color1: red3
+xterm.vt100.color2: green3
+xterm.vt100.color3: yellow3
+!xterm.vt100.color4: blue2
+xterm.vt100.color4: blue
+xterm.vt100.color5: magenta3
+xterm.vt100.color6: cyan3
+xterm.vt100.color7: gray90
+xterm.vt100.color8: gray50
+xterm.vt100.color9: red
+xterm.vt100.color10: green
+xterm.vt100.color11: yellow
+!xterm.vt100.color12: rgb:5c/5c/ff
+xterm.vt100.color12: teal
+xterm.vt100.color13: fuchsia
+xterm.vt100.color14: aqua
+xterm.vt100.color15: white
+
