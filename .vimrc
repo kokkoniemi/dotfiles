@@ -55,7 +55,7 @@ if &t_Co > 2 || has("gui_running")
   set mouse=a
   set fillchars+=vert:│
   set wildmenu
-  set wildmode=list:longest
+  set wildmode=full:lastused
   "set colorcolumn=81
   " set lsp column color same as background
   set bg=dark
