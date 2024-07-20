@@ -6,8 +6,12 @@ endif
 
 " Set leader key to space
 let mapleader = " "
+
 " Use 16-color palette
 set t_Co=16
+
+" Use ruler
+set ruler
 
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
