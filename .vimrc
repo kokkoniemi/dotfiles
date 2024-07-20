@@ -56,6 +56,7 @@ if &t_Co > 2 || has("gui_running")
   set fillchars+=vert:│
   set wildmenu
   set wildmode=full:lastused
+  set wildoptions=pum
   "set colorcolumn=81
   " set lsp column color same as background
   set bg=dark
