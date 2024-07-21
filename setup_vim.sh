@@ -123,32 +123,6 @@ else
  	echo "Symlink created to $current_dir/.vimrc from $user_vimrc"
 fi
 
-setup_acme="n"
-read -p "Do you want to install Plan-9 inspired Acme colorscheme? (y/n) " setup_acme
-
-if [[ "$setup_acme" =~ ^[Yy]$ ]]; then
-	mkdir -p "$COLORS_DIR"
-	user_acme="$COLORS_DIR/acme.vim"
-
-	if [ -e "$user_acme" ]; then
-		echo "A colorscheme called 'acme.vim' already exists in '$user_acme'."
-		read -p "Do you want to replace it? (y/n) " choice
-		case "$choice" in
-			y|Y )
-				echo "Replacing existing acme.vim"
-				rm -f "$user_acme"
-				ln -s "$current_dir/.vim/colors/acme.vim" "$user_acme"
-				;;
-			* )
-				echo "Keeping existing 'acme.vim'"
-				;;
-		esac
-	else
-		ln -s "$current_dir/.vim/colors/acme.vim" "$user_acme"
-		echo "Symlink created to $current_dir/.vim/colors/acme.vim from $user_acme"
-	fi
-fi
-
 if vim --version | grep -q '+clipboard'; then
 	echo "Vim has clipboard support. All good!"
 else

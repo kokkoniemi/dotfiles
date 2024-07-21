@@ -55,16 +55,15 @@ if &t_Co > 2 || has("gui_running")
   set mouse=a
   set fillchars+=vert:│
   set wildmenu
-  set wildmode=full:lastused
-  set wildoptions=pum
+  set wildmode=longest:list,full
   "set colorcolumn=81
   " set lsp column color same as background
   set bg=dark
   hi! link SignColumn Normal
-  hi Visual cterm=none ctermbg=blue ctermfg=black
-  hi VertSplit ctermfg=white ctermbg=NONE cterm=NONE 
-  hi StatusLine ctermfg=black ctermbg=white cterm=NONE
-  hi StatusLineNC ctermfg=darkgray ctermbg=white cterm=NONE
+  hi! Visual cterm=none ctermbg=blue ctermfg=black
+  hi! VertSplit ctermfg=white ctermbg=NONE cterm=NONE 
+  hi! StatusLine ctermfg=black ctermbg=white cterm=NONE
+  hi! StatusLineNC ctermfg=darkgray ctermbg=white cterm=NONE
 
   syntax on
   "set number
@@ -96,8 +95,11 @@ augroup END
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 
-" Open fzf with LEADER + B
-nnoremap <Leader>b <ESC>:Files<cr>
+" Open fzf file opener with LEADER + F
+nnoremap <Leader>f <ESC>:Files<cr>
+
+" Open fzf buffer opener with LEADER + B
+nnoremap <Leader>b <ESC>:Buffer<cr>
 
 " Open fern with LEADER + J
 nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
@@ -119,7 +121,7 @@ augroup FernGroup
 	autocmd FileType fern setlocal fillchars=eob:\ 
 augroup END
 
-" Load VIM 8 packages
+" Load VIM packages
 packloadall
 
 if executable('pylsp')
