@@ -101,6 +101,12 @@ nnoremap <Leader>f <ESC>:Files<cr>
 " Open fzf buffer opener with LEADER + B
 nnoremap <Leader>b <ESC>:Buffer<cr>
 
+" Do not show file names in Ag or Rg
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
 " Open fern with LEADER + J
 nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
 let g:fern#hide_cursorline=1
