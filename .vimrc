@@ -54,6 +54,7 @@ if &t_Co > 2 || has("gui_running")
   
   set mouse=a
   set fillchars+=vert:│
+  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
   set wildmenu
   set wildmode=longest:list,full
   "set colorcolumn=81
