@@ -108,6 +108,9 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
+" Open Rg with LEADER + G
+nnoremap <Leader>g <ESC>:Rg<cr>
+
 " Open fern with LEADER + J
 nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
 let g:fern#hide_cursorline=1
