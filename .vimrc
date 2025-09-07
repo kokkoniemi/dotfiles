@@ -97,10 +97,10 @@ let g:netrw_banner=0
 let g:netrw_liststyle=3
 
 " Open fzf file opener with LEADER + F
-nnoremap <Leader>f <ESC>:Files<cr>
+nnoremap <Leader>f <ESC>:Files!<cr>
 
 " Open fzf buffer opener with LEADER + B
-nnoremap <Leader>b <ESC>:Buffer<cr>
+nnoremap <Leader>b <ESC>:Buffer!<cr>
 
 " Do not show file names in Ag or Rg
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
@@ -109,7 +109,7 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 
 " Open Rg with LEADER + G
-nnoremap <Leader>g <ESC>:Rg<cr>
+nnoremap <Leader>g <ESC>:Rg!<cr>
 
 augroup FernInit
 	autocmd!
