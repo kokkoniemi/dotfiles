@@ -69,7 +69,10 @@ esac
 read -p "Do you want to setup vim-fern? (y/n) " setup_fern
 case "$setup_fern" in
 	y|Y )
-		plugin_repos+=(https://github.com/lambdalisue/vim-fern.git)
+		plugin_repos+=(
+			"https://github.com/lambdalisue/vim-fern.git"
+			"https://github.com/lambdalisue/vim-fern-hijack.git"
+		)
 		;;
 	* )
 		echo "fern will not be configured for vim"

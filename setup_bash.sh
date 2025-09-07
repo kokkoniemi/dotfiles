@@ -15,7 +15,7 @@ prompt_cmd_str="
 # PS1
 
 update_PS1 () {
-	PS1=\"\033]0;$USER@$HOSTNAME\007\W\[\e[91m\]$(__git_ps1)\[\e[00m\]$ \"
+	PS1=\"\033]0;\$USER@\$HOSTNAME\007\W\[\e[91m\]\$(__git_ps1)\[\e[00m\]$ \"
 }
 
 update_PS1

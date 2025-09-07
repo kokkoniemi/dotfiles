@@ -111,25 +111,31 @@ command! -bang -nargs=* Rg
 " Open Rg with LEADER + G
 nnoremap <Leader>g <ESC>:Rg<cr>
 
-" Open fern with LEADER + J
-nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
-let g:fern#hide_cursorline=1
-let g:fern#default_hidden=1
-let g:fern#renderer#default#leading = "│"
-let g:fern#renderer#default#root_symbol = "┬─ "
-let g:fern#renderer#default#leaf_symbol = "├─ "
-let g:fern#renderer#default#collapsed_symbol = "├─ "
-let g:fern#renderer#default#expanded_symbol = "├┬ "
-
-hi FernRootSymbol ctermfg=gray
-hi FernLeafSymbol ctermfg=gray
-hi FernBranchSymbol ctermfg=gray
-hi FernLeaderSymbol ctermfg=gray
-
-augroup FernGroup
+augroup FernInit
 	autocmd!
+	autocmd FileType fern nmap <buffer><expr> <2-LeftMouse>
+	\ fern#smart#leaf(
+	\  "<Plug>(fern-action-open:edit)",
+	\  "<Plug>(fern-action-expand)",
+	\  "<Plug>(fern-action-collapse)"
+	\ )
+	" Open fern with LEADER + J
+	nnoremap <Leader>j :Fern . -drawer -toggle -stay -reveal=%<cr>
+	let g:fern#hide_cursorline=1
+	let g:fern#default_hidden=1
+	let g:fern#renderer = "devicons"
+	"let g:fern#renderer#default#leading = "│"
+	"let g:fern#renderer#default#root_symbol = "┬─ "
+	"let g:fern#renderer#default#leaf_symbol = "├─ "
+	"let g:fern#renderer#default#collapsed_symbol = "├─ "
+	"let g:fern#renderer#default#expanded_symbol = "├┬ "
 	autocmd FileType fern setlocal fillchars=eob:\ 
+	hi FernRootSymbol ctermfg=gray
+	hi FernLeafSymbol ctermfg=gray
+	hi FernBranchSymbol ctermfg=gray
+	hi FernLeaderSymbol ctermfg=gray
 augroup END
+
 
 " Load VIM packages
 packloadall
