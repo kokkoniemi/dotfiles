@@ -1,0 +1,86 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# PS1
+
+format() {
+  local color_name=$1
+  shift
+  local text="$*"
+
+  local color_code
+  case "$color_name" in
+    red)     color_code=31 ;;
+    green)   color_code=32 ;;
+    yellow)  color_code=33 ;;
+    blue)    color_code=94 ;;
+    magenta) color_code=35 ;;
+    cyan)    color_code=36 ;;
+    grey)    color_code=90 ;;
+    *) echo "Unknown color: $color_name" >&2; return 1 ;;
+  esac
+
+  printf "\e[90m[\[\e[%sm\]%s\[\e[0m\]\e[90m]\[\e[0m\]" "$color_code" "$text"
+}
+
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+
+function parse_git_branch {
+  if ! which git >/dev/null 2>&1; then
+    return
+  fi	       
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+update_PS1 () {
+	_time="$(format grey "\t")"
+	
+	_toolbox=""
+	if [[ -n "$TOOLBOX_PATH" ]]; then
+		_toolbox="$(format magenta "toolbox-${TOOLBOX_NAME:-$(grep '^name=' /run/.containerenv | cut -d= -f2 | tr -d '\"')}")"
+	fi
+	
+	_git=""
+	_git_branch="$(parse_git_branch)"
+	if [[ -n "$_git_branch" ]]; then
+		_git="$(format red "$_git_branch")"
+	fi
+
+	PS1="$_time$_toolbox$_git \W \$ "
+}
+
+update_PS1
+PROMPT_COMMAND=update_PS1
+
+# Add Go binary to path
+export PATH="/home/mk/.go/bin:$PATH"
+export GOPATH="/home/mk/go"
+export GOBIN="/home/mk/go/bin"
+export PATH="$GOBIN:$PATH"
