@@ -73,11 +73,18 @@ update_PS1 () {
 		_git="$(format red "$_git_branch")"
 	fi
 
-	PS1="$_time$_toolbox$_git \W \$ "
+	_tmux=""
+	if [[ -n "$TMUX" ]]; then
+		_sname=$(tmux display-message -p '#S' 2>/dev/null)
+		_tmux="$(format green "tmux:$_sname")"
+	fi
+
+	PS1="$_time$_toolbox$_git$_tmux \W \$ "
 }
 
 update_PS1
 PROMPT_COMMAND=update_PS1
+
 
 # Add Go binary to path
 export PATH="/home/mk/.go/bin:$PATH"
