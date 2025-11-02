@@ -45,7 +45,7 @@ format() {
     *) echo "Unknown color: $color_name" >&2; return 1 ;;
   esac
 
-  printf "\e[90m[\[\e[%sm\]%s\[\e[0m\]\e[90m]\[\e[0m\]" "$color_code" "$text"
+  printf "\[\e[90m\][\[\e[%sm\]%s\[\e[0m\]\[\e[90m\]]\[\e[0m\]" "$color_code" "$text"
 }
 
 function parse_git_dirty {
@@ -70,7 +70,7 @@ update_PS1 () {
 	_git=""
 	_git_branch="$(parse_git_branch)"
 	if [[ -n "$_git_branch" ]]; then
-		_git="$(format red "$_git_branch")"
+		_git="$(format cyan "$_git_branch")"
 	fi
 
 	_tmux=""
@@ -91,3 +91,5 @@ export PATH="/home/mk/.go/bin:$PATH"
 export GOPATH="/home/mk/go"
 export GOBIN="/home/mk/go/bin"
 export PATH="$GOBIN:$PATH"
+
+alias vim=vimx
