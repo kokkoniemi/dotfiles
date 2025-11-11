@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # essentials
-sudo dnf install gcc make vim vimx wireguard-tools git fzf rg
+sudo dnf install gcc make vim vimx wireguard-tools git fzf rg terminus-fonts terminus-fonts-console
 
 # 1password
 sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
