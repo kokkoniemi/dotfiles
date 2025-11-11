@@ -13,3 +13,22 @@ wget --quiet -O /tmp/opensnitch.rpm https://github.com/evilsocket/opensnitch/rel
 wget --quiet -O /tmp/opensnitch-ui.rpm https://github.com/evilsocket/opensnitch/releases/download/v1.7.2/opensnitch-ui-1.7.2-1.noarch.rpm
 sudo dnf install /tmp/opensnitch.rpm /tmp/opensnitch-ui.rpm
 
+# Bashrc
+
+TARGET="$(pwd)/.bashrc-fedora"
+LINK="$HOME/.bashrc"
+
+if [ -L "$LINK" ]; then
+    # It's a symlink — check where it points
+    [ "$(readlink -f "$LINK")" = "$TARGET" ] && echo "Symlink already correct." || {
+        read -p "~/.bashrc points elsewhere. Replace with link to $TARGET? [y/N] " ans
+        [[ "$ans" =~ ^[Yy]$ ]] && ln -sf "$TARGET" "$LINK" && echo "Symlink updated."
+    }
+elif [ -e "$LINK" ]; then
+    read -p "~/.bashrc exists (not a symlink). Replace with link to $TARGET? [y/N] " ans
+    [[ "$ans" =~ ^[Yy]$ ]] && mv "$LINK" "$LINK.backup" && ln -s "$TARGET" "$LINK" && echo "Backup created and symlink made."
+else
+    ln -s "$TARGET" "$LINK"
+    echo "Symlink created: $LINK → $TARGET"
+fi
+
