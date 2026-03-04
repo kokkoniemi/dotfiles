@@ -73,13 +73,7 @@ update_PS1 () {
 		_git="$(format cyan "$_git_branch")"
 	fi
 
-	_tmux=""
-	if [[ -n "$TMUX" ]]; then
-		_sname=$(tmux display-message -p '#S' 2>/dev/null)
-		_tmux="$(format green "tmux:$_sname")"
-	fi
-
-	PS1="$_time$_toolbox$_git$_tmux \W \$ "
+	PS1="$_time$_toolbox$_git \W \$ "
 }
 
 update_PS1
@@ -93,3 +87,7 @@ export GOBIN="/home/mk/go/bin"
 export PATH="$GOBIN:$PATH"
 
 alias vim=vimx
+
+export PATH="/home/mk/.local/bin:$PATH"
+export PATH="/home/mk/Development/android-studio/bin:$PATH"
+

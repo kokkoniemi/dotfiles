@@ -13,6 +13,15 @@ wget --quiet -O /tmp/opensnitch.rpm https://github.com/evilsocket/opensnitch/rel
 wget --quiet -O /tmp/opensnitch-ui.rpm https://github.com/evilsocket/opensnitch/releases/download/v1.7.2/opensnitch-ui-1.7.2-1.noarch.rpm
 sudo dnf install /tmp/opensnitch.rpm /tmp/opensnitch-ui.rpm
 
+# non-free media codecs
+sudo dnf install \
+https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+sudo dnf5 install @multimedia @sound-and-video \
+--setopt=install_weak_deps=False \
+--exclude=PackageKit-gstreamer-plugin
+
 # Bashrc
 
 TARGET="$(pwd)/.bashrc-fedora"
