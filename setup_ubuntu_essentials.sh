@@ -4,15 +4,15 @@ if [ -r /etc/os-release ]; then
     . /etc/os-release
 fi
 
-if [ "${ID:-}" != "debian" ] || [ "${VERSION_ID:-}" != "13" ]; then
-    echo "This script is built for Debian 13 (Trixie)."
+if [ "${ID:-}" != "ubuntu" ] || [ "${VERSION_ID:-}" != "24.04" ]; then
+    echo "This script is built for Ubuntu 24.04."
     echo "Detected: ${PRETTY_NAME:-unknown OS}"
     read -p "Continue anyway? [y/N] " ans
     [[ "$ans" =~ ^[Yy]$ ]] || exit 1
 fi
 
 # essentials
-sudo apt install gcc make vim vim-gtk3 wireguard-tools git fzf ripgrep tmux 
+sudo apt install gcc make vim vim-gtk3 wireguard-tools git fzf ripgrep tmux
 
 # 1password
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
@@ -27,27 +27,3 @@ sudo apt update && sudo apt install 1password
 wget --quiet -O /tmp/opensnitch.deb https://github.com/evilsocket/opensnitch/releases/download/v1.8.0/opensnitch_1.8.0-1_amd64.deb
 wget --quiet -O /tmp/opensnitch-ui.deb https://github.com/evilsocket/opensnitch/releases/download/v1.8.0/python3-opensnitch-ui_1.8.0-1_all.deb
 sudo apt install /tmp/opensnitch.deb /tmp/opensnitch-ui.deb
-
-# non-free media codecs
-sudo apt install ffmpeg \
-gstreamer1.0-plugins-{good,bad,ugly} \
-gstreamer1.0-libav
-
-# Bashrc
-
-TARGET="$(pwd)/.bashrc-debian"
-LINK="$HOME/.bashrc"
-
-if [ -L "$LINK" ]; then
-    # It's a symlink — check where it points
-    [ "$(readlink -f "$LINK")" = "$TARGET" ] && echo "Symlink already correct." || {
-        read -p "~/.bashrc points elsewhere. Replace with link to $TARGET? [y/N] " ans
-        [[ "$ans" =~ ^[Yy]$ ]] && ln -sf "$TARGET" "$LINK" && echo "Symlink updated."
-    }
-elif [ -e "$LINK" ]; then
-    read -p "~/.bashrc exists (not a symlink). Replace with link to $TARGET? [y/N] " ans
-    [[ "$ans" =~ ^[Yy]$ ]] && mv "$LINK" "$LINK.backup" && ln -s "$TARGET" "$LINK" && echo "Backup created and symlink made."
-else
-    ln -s "$TARGET" "$LINK"
-    echo "Symlink created: $LINK → $TARGET"
-fi

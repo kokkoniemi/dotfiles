@@ -1,5 +1,18 @@
 #!/bin/bash
 
+EXPECTED_ID="fedora"
+
+if [ -r /etc/os-release ]; then
+    . /etc/os-release
+fi
+
+if [ "${ID:-}" != "$EXPECTED_ID" ] || { [ "${VERSION_ID:-}" != "42" ] && [ "${VERSION_ID:-}" != "43" ]; }; then
+    echo "This script is built for Fedora 42 or 43."
+    echo "Detected: ${PRETTY_NAME:-unknown OS}"
+    read -p "Continue anyway? [y/N] " ans
+    [[ "$ans" =~ ^[Yy]$ ]] || exit 1
+fi
+
 # essentials
 sudo dnf install gcc make vim vimx wireguard-tools git fzf rg terminus-fonts terminus-fonts-console
 
@@ -40,4 +53,3 @@ else
     ln -s "$TARGET" "$LINK"
     echo "Symlink created: $LINK → $TARGET"
 fi
-
