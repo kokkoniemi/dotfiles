@@ -12,7 +12,7 @@ if [ "${ID:-}" != "ubuntu" ] || [ "${VERSION_ID:-}" != "24.04" ]; then
 fi
 
 # essentials
-sudo apt install gcc make vim vim-gtk3 wireguard-tools git fzf ripgrep tmux
+sudo apt install gcc make vim vim-gtk3 wireguard-tools git fzf ripgrep tmux wl-clipboard
 
 # 1password
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --batch --yes --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
